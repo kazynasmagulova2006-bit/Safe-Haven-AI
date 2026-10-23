@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SafeHaven AI – защита и убежище</title>
+<meta name="description" content="Помощник по безопасности: оценка риска, план безопасности, ресурсы, юридические заявления и защита прав женщин.">
+<link id="favicon" rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Lora:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#0c0a26;--card:rgba(32,26,90,.55);--in:rgba(8,6,30,.4);--line:rgba(167,139,250,.28);--tx:#ece9ff;--mut:#aaa5d9;--vi:#8b6cff;--bl:#3b9cff;--lav:#c9bcff;--ex:#ff5d8f;--ok:#5eead4;
+--h:'Cormorant Garamond','Lora',Georgia,serif;--b:'Lora',Georgia,serif}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f2efff;--card:rgba(255,255,255,.75);--in:rgba(255,255,255,.7);--line:rgba(91,62,220,.25);--tx:#1d1650;--mut:#58528f;--lav:#5b3edc;--ok:#0f766e}}
+:root[data-theme="light"]{--bg:#f2efff;--card:rgba(255,255,255,.75);--in:rgba(255,255,255,.7);--line:rgba(91,62,220,.25);--tx:#1d1650;--mut:#58528f;--lav:#5b3edc;--ok:#0f766e}
+:root[data-theme="dark"]{--bg:#0c0a26;--card:rgba(32,26,90,.55);--in:rgba(8,6,30,.4);--line:rgba(167,139,250,.28);--tx:#ece9ff;--mut:#aaa5d9;--lav:#c9bcff}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}*,*::before,*::after{box-sizing:border-box}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--tx);font:400 16px/1.65 var(--b);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+#fx{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.blob{position:fixed;border-radius:50%;filter:blur(80px);opacity:.4;z-index:0;pointer-events:none;animation:dr 18s ease-in-out infinite alternate}
+.b1{width:46vw;height:46vw;background:var(--vi);left:-12vw;top:-10vw}.b2{width:40vw;height:40vw;background:var(--bl);right:-10vw;top:30vh;animation-delay:-6s}
+@keyframes dr{to{transform:translate(8vw,6vh) scale(1.2)}}
+#glow{position:fixed;width:360px;height:360px;margin:-180px 0 0 -180px;border-radius:50%;background:radial-gradient(circle,rgba(139,108,255,.25),transparent 65%);z-index:0;pointer-events:none;left:50%;top:30%}
+.wrap{position:relative;z-index:2;max-width:1120px;margin:0 auto;padding:0 20px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 72%,transparent);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:10px;padding-bottom:10px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;font:700 26px var(--h);letter-spacing:.01em}
+.brand small{display:block;font:italic 500 15px var(--h);color:var(--mut)}
+.logo{width:42px;height:42px;border-radius:14px 14px 22px 14px;background:linear-gradient(135deg,var(--vi),var(--bl));display:grid;place-items:center;animation:wob 6s ease-in-out infinite}
+@keyframes wob{50%{border-radius:22px 14px 14px 22px;transform:rotate(-6deg)}}
+button{font:inherit;color:inherit;cursor:pointer}
+.btn{border:1px solid var(--line);background:var(--card);padding:9px 16px;border-radius:999px;font-weight:700;font-size:14px;display:inline-flex;gap:8px;align-items:center;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px);background:rgba(139,108,255,.3)}
+.btn.ex{background:var(--ex);border-color:transparent;color:#fff}.btn.mn{background:linear-gradient(120deg,var(--vi),var(--bl));border:0;color:#fff}
+:focus-visible{outline:3px solid var(--bl);outline-offset:2px}
+nav.tabs{display:flex;gap:6px;overflow-x:auto;padding:14px 0 0}
+.tab{border:1px solid var(--line);background:transparent;padding:10px 20px;border-radius:999px;font:700 19px var(--h);white-space:nowrap;transition:.25s}
+.tab[aria-selected=true]{background:linear-gradient(120deg,var(--vi),var(--bl));color:#fff;border-color:transparent;transform:translateY(-2px)}
+.hero{display:grid;grid-template-columns:1.3fr .7fr;gap:20px;align-items:center;padding:34px 0 18px}
+h1{font:700 clamp(38px,6vw,68px)/1.02 var(--h);margin:0 0 14px;letter-spacing:-.01em}
+h1 em{font-style:italic;font-weight:500;color:var(--lav)}
+.hero p{color:var(--mut);max-width:54ch;margin:0}
+#orb{width:100%;max-width:240px;margin:0 auto;display:block;overflow:visible}
+.ring{transform-origin:200px 200px;animation:sp 30s linear infinite}.ring.r2{animation-duration:46s;animation-direction:reverse}
+@keyframes sp{to{transform:rotate(360deg)}}
+.pl{animation:pl 3s ease-in-out infinite;transform-origin:200px 200px}@keyframes pl{50%{transform:scale(1.07)}}
+.panel{display:none;padding:12px 0 40px}.panel.on{display:block;animation:fi .5s}@keyframes fi{from{opacity:0;transform:translateY(12px)}}
+.grid{display:grid;grid-template-columns:1.5fr 1fr;gap:20px}.stack{display:grid;gap:20px;align-content:start}
+.card{background:var(--card);border:1px solid var(--line);border-radius:28px 28px 28px 8px;padding:24px;backdrop-filter:blur(12px)}
+.card.alt{border-radius:8px 28px 28px 28px}
+h2{font:700 30px/1.1 var(--h);margin:0 0 6px}h3{font:700 22px var(--h);margin:0 0 4px}
+.sub{color:var(--mut);font-size:14px;margin:0 0 14px}
+#log{height:320px;overflow:auto;display:flex;flex-direction:column;gap:12px;padding:14px;border-radius:18px;background:var(--in);border:1px solid var(--line);margin-bottom:12px}
+.msg{max-width:90%;padding:10px 14px;border-radius:18px 18px 18px 4px;background:rgba(139,108,255,.22);animation:pop .35s cubic-bezier(.3,1.6,.5,1);white-space:pre-line}
+.msg.me{align-self:flex-end;border-radius:18px 18px 4px 18px;background:linear-gradient(120deg,var(--vi),var(--bl));color:#fff}
+.msg.dg{background:rgba(255,93,143,.2);border:1px solid var(--ex)}
+.msg .acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+@keyframes pop{from{opacity:0;transform:scale(.8) translateY(10px)}}
+.dots i{display:inline-block;width:7px;height:7px;margin:0 2px;border-radius:50%;background:var(--lav);animation:bn 1s infinite}.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes bn{50%{transform:translateY(-6px)}}
+.chip{border:1px solid var(--line);background:transparent;padding:6px 12px;border-radius:999px;font-size:13px;font-weight:500;transition:.2s}.chip:hover,.chip.on{background:var(--vi);color:#fff}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+form.f{display:flex;gap:8px}
+input,select,textarea{font:inherit;color:var(--tx);background:var(--in);border:1px solid var(--line);border-radius:14px;padding:11px 13px;width:100%}
+textarea{min-height:90px;resize:vertical}select option{color:#111}
+label{font-size:13px;color:var(--mut);display:block;margin-bottom:4px;font-weight:500}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.hot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 14px;border-radius:16px;border:1px solid var(--line);background:var(--in);margin-bottom:8px}
+.hot b{display:block;font-size:15px}.hot small{color:var(--mut)}
+a.num{font:700 14px var(--b);color:var(--ok);background:rgba(94,234,212,.12);padding:6px 12px;border-radius:12px;white-space:nowrap;text-decoration:none}a.num:hover{background:rgba(94,234,212,.25)}
+details{border:1px solid var(--line);border-radius:18px;background:var(--in);margin-bottom:10px;padding:2px 16px}
+summary{cursor:pointer;font:700 21px var(--h);padding:10px 0;list-style:none;display:flex;justify-content:space-between;gap:10px}
+summary::after{content:"+";color:var(--lav);transition:transform .3s}details[open] summary::after{transform:rotate(45deg)}
+details p,details li{color:var(--mut);font-size:15px;margin:0 0 10px}details ul{padding-left:20px;margin:0 0 10px}
+.q{padding:12px 0;border-bottom:1px dashed var(--line)}.q:last-child{border:0}
+.q label{color:var(--tx);font-size:15px;margin-bottom:8px}
+.res{margin-top:14px;padding:16px;border-radius:18px;border:1px solid var(--line);background:var(--in);display:none}.res.show{display:block;animation:fi .5s}
+.lvl{display:inline-block;font:700 22px var(--h);padding:2px 14px;border-radius:999px;margin-bottom:8px}
+.l0{background:rgba(94,234,212,.2);color:var(--ok)}.l1{background:rgba(255,200,87,.2);color:#ffc857}.l2{background:rgba(255,93,143,.25);color:var(--ex)}
+.bar{height:8px;border-radius:8px;background:var(--in);overflow:hidden;margin:6px 0 12px}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ok),#ffc857,var(--ex));transition:width .8s}
+#draft{white-space:pre-wrap;font-size:14.5px;border:1px dashed var(--lav);border-radius:16px;padding:16px;background:var(--in);display:none;margin-top:14px}
+.note{font-size:13px;color:var(--mut);border-left:3px solid var(--vi);padding-left:12px;margin:12px 0}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,40px);opacity:0;background:var(--vi);color:#fff;padding:12px 20px;border-radius:999px;z-index:80;transition:.4s;font-weight:700}.toast.show{transform:translate(-50%,0);opacity:1}
+footer{position:relative;z-index:2;text-align:center;color:var(--mut);font-size:13px;padding:0 20px 36px}
+body.st main,body.st .hero{filter:blur(14px) grayscale(1);opacity:.5}body.st main:hover,body.st .hero:hover{filter:none;opacity:1}
+.chk-wrap{display:flex;align-items:center;gap:10px;margin:12px 0;cursor:pointer;font-size:14px;color:var(--tx)}
+.chk-wrap input[type="checkbox"]{width:18px;height:18px;accent-color:var(--vi);cursor:pointer}
+@media(max-width:860px){.hero,.grid,.two{grid-template-columns:1fr}#orb{display:none}.hs{display:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="fx" aria-hidden="true"></canvas><div class="blob b1"></div><div class="blob b2"></div><div id="glow"></div>
+<header class="top"><div class="wrap">
+ <div class="brand"><div class="logo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg></div><div>SafeHaven AI<small>помощь, которая знает ваши права</small></div></div>
+ <div style="display:flex;gap:8px"><button class="btn" id="stBtn" type="button" aria-pressed="false">🙈 <span class="hs">Скрытный режим</span></button><button class="btn ex" id="exBtn" type="button">⎋ Быстрый выход (Esc)</button></div>
+</div></header>
+
+<div class="wrap">
+<section class="hero"><div><h1>Вы не одни. <em>Мы знаем, что делать дальше.</em></h1><p>Оценка риска, личный план безопасности, проверенные номера по странам и юридически грамотные заявления в прокуратуру и на убежище. Конфиденциально и анонимно.</p></div>
+<svg id="orb" viewBox="0 0 400 400" role="img" aria-label="Щит в орбитах"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#3b9cff"/></linearGradient><radialGradient id="g2"><stop offset="0" stop-color="#8b6cff" stop-opacity=".55"/><stop offset="1" stop-color="#8b6cff" stop-opacity="0"/></radialGradient></defs>
+<circle cx="200" cy="200" r="190" fill="url(#g2)" class="pl"/><g class="ring"><circle cx="200" cy="200" r="150" fill="none" stroke="#a78bfa" stroke-opacity=".5" stroke-dasharray="3 10" stroke-width="2"/><circle cx="350" cy="200" r="9" fill="#5eead4"/><polygon points="200,45 210,65 190,65" fill="#c9bcff"/></g>
+<g class="ring r2"><ellipse cx="200" cy="200" rx="175" ry="110" fill="none" stroke="#3b9cff" stroke-opacity=".5" stroke-width="1.5"/><rect x="368" y="192" width="14" height="14" rx="4" fill="#ff5d8f"/></g>
+<g id="shield" style="transform-origin:200px 200px"><path d="M200 105l78 28v62c0 52-34 82-78 97-44-15-78-45-78-97v-62z" fill="url(#g1)"/><path d="M168 205l24 24 42-48" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></g></svg></section>
+<nav class="tabs" role="tablist" id="tabs">
+ <button class="tab" role="tab" data-t="assistant">Помощник ИИ</button><button class="tab" role="tab" data-t="resources">Ресурсы</button><button class="tab" role="tab" data-t="complaint">Заявление в прокуратуру</button><button class="tab" role="tab" data-t="asylum">Убежище</button>
+</nav>
+
+<main>
+<!-- ПОМОЩНИК ИИ -->
+<section class="panel" id="p-assistant"><div class="grid">
+ <article class="card"><h2>Юридический & Психологический ИИ-помощник</h2><p class="sub">Работает на базе бесплатного Gemini AI. Понимает права женщин, Уголовный кодекс и законы о защите от насилия.</p>
+  <div class="row" style="align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:8px"><label for="cc" style="margin:0">Ваша страна:</label><select id="cc" style="width:auto"></select></div>
+    <input type="password" id="apiKeyInp" placeholder="Gemini API Key (опционально)" style="max-width:210px;font-size:12px;padding:6px 10px" title="Вставьте свой ключ Google Gemini API если есть">
+  </div>
+  <div id="log" aria-live="polite"></div>
+  <div class="row" id="sug"></div>
+  <form class="f" id="chat" autocomplete="off"><input id="inp" placeholder="Опишите ситуацию своими словами…" aria-label="Сообщение" required><button class="btn mn" type="submit">Отправить</button></form></article>
+ <article class="card alt"><h2>Оценка риска</h2><p class="sub">Пять вопросов по признакам, которые исследователи домашнего насилия считают наиболее опасными.</p><div id="tri"></div><button class="btn mn" id="triBtn" type="button" style="margin-top:10px">Получить план безопасности</button><div class="res" id="triRes" role="region" aria-label="Результат оценки"></div></article>
+</div></section>
+
+<!-- РЕСУРСЫ -->
+<section class="panel" id="p-resources"><div class="grid">
+ <div class="stack"><article class="card"><h2>Полезные статьи и права</h2><p class="sub">Короткие практические инструкции. Нажмите, чтобы раскрыть.</p><div id="arts"></div></article></div>
+ <div class="stack"><article class="card alt" style="border-color:rgba(255,93,143,.45)"><h2>Номера помощи и кризисные центры</h2><p class="sub">Выберите страну. Нажмите на номер, чтобы позвонить.</p><select id="rc" aria-label="Страна" style="margin-bottom:12px"></select><div id="nums"></div><div class="note" id="src"></div></article></div>
+</div></section>
+
+<!-- ПРОКУРАТУРА -->
+<section class="panel" id="p-complaint"><div class="grid">
+ <article class="card"><h2>Заявление в прокуратуру / полицию</h2><p class="sub">Заполните поля. Шаблон составлен юридически строго с ссылками на УПК и Законы о бытовом насилии.</p>
+  <div class="two"><div><label for="cs">В каком государстве подаётся заявление</label><select id="cs"></select></div><div><label for="ct">Квалификация правонарушения</label><select id="ct"><option value="бытовое и физическое насилие (нанесение побоев, вред здоровью)">Физическое насилие / побои</option><option value="угрозы убийством, истязание и психологическое насилие">Угрозы и истязания</option><option value="экономическое насилие и удержание документов/имущества">Экономическое насилие</option><option value="бездействие органов полиции по ранее поданным заявлениям">Бездействие полиции</option></select></div></div>
+  <div class="two"><div><label for="cn">ФИО заявителя</label><input id="cn" placeholder="Иванова Анна Сергеевна"></div><div><label for="cl">Контакт для связи (безопасный)</label><input id="cl" placeholder="e-mail или безопасный адрес"></div></div>
+  <div class="two"><div><label for="cd">Дата и место событий</label><input id="cd" placeholder="12.10.2026, г. Алматы"></div><div><label for="cw">Данные правонарушителя / обидчика</label><input id="cw" placeholder="ФИО, степень родства/отношений"></div></div>
+  <label for="cx">Хронология и обстоятельства произошедшего</label><textarea id="cx" placeholder="Подробно и без эмоций: даты, факты, действия обидчика, нанесенный вред."></textarea>
+  <label for="ce" style="margin-top:10px">Доказательства и свидетели</label><input id="ce" placeholder="Справка из больницы/травмпункта, фото, переписки, аудио, свидетели">
+  <label class="chk-wrap"><input type="checkbox" id="cOrder" checked> Потребовать вынесение Защитного предписания и направление на СМЭ (экспертизу)</label>
+  <label class="chk-wrap"><input type="checkbox" id="cAnon" checked> Просить сохранить мои контакты и местонахождение в тайне от правонарушителя</label>
+  <button class="btn mn" id="cg" type="button" style="margin-top:14px;width:100%;justify-content:center">Составить юридическое заявление</button>
+  <div id="draft"></div><button class="btn" id="cp" type="button" style="margin-top:10px;display:none">Скопировать текст</button></article>
+ <article class="card alt"><h2>Порядок подачи и гарантии</h2><div id="how"></div></article>
+</div></section>
+
+<!-- УБЕЖИЩЕ -->
+<section class="panel" id="p-asylum"><article class="card" style="max-width:720px"><h2>Заявление на убежище</h2><p class="sub">Черновик для миграционной службы. Подайте его как можно раньше: в ряде стран есть жёсткие сроки.</p>
+ <div class="two"><div><label for="ac">Страна-приёмник</label><select id="ac"><option value="DE">Германия (EU Asylum Framework)</option><option value="CA">Канада (Humanitarian Stream)</option><option value="ES">Испания (International Protection)</option><option value="US">США (Asylum Office)</option></select></div>
+ <div><label for="ab">Основание</label><select id="ab"><option>Гендерное преследование и бытовое насилие</option><option>Дискриминация и отсутствие защиты государства</option><option>Непосредственная опасность для жизни</option></select></div></div>
+ <button class="btn mn" id="ag" type="button" style="width:100%;justify-content:center">Сгенерировать шаблон</button><div id="adraft" class="res"></div><div class="note" id="anote"></div></article></section>
+</main></div>
+<footer>Справочно-юридический сервис SafeHaven AI. Не является прямой индивидуальной юридической консультацией. Esc + Esc: быстрый выход.</footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const toast=t=>{const e=$('#toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),2400)};
+
+/* ===== БАЗА ЗНАНИЙ И НОМЕРА ПО СТРАНАМ ===== */
+const DB={
+KZ:{n:'Казахстан',em:'102 (полиция) / 112',nums:[
+  ['Единый телефон 111','Вопросы семьи, женщин и защиты прав детей. 24/7, бесплатно','111'],
+  ['Национальная линия 150','Кризисная линия. WhatsApp: +7 708 106 08 10 / +7 708 150 0000','150'],
+  ['Полиция (Экстренно)','Регистрация правонарушений и выезд наряда','102'],
+  ['Скорая помощь','Фиксация телесных повреждений и травм','103'],
+  ['Единая служба спасения','При чрезвычайных ситуациях','112'],
+  ['Кризисный центр Алматы','Телефон доверия для женщин, пострадавших от насилия','+77273175717']
+],
+ src:'Номера 111, 150, 102, 103 и 112 сверены с официальными ресурсами РК (gov.kz). Сайт линии: telefon150.kz.',
+ org:'Прокуратуру по месту жительства / Департамент полиции РК',law:'Закону РК «О профилактике бытового насилия», УПК РК и нормам УК РК (ст. 108-1, 109-1 и др.)',
+ how:[
+  'Заявление подаётся в полицию или органы прокуратуры лично, почтой или через eGov.',
+  'Потребуйте выдать ТАЛОН-УВЕДОМЛЕНИЕ с уникальным номером КУИ (Книга учета информации).',
+  'Попросите участкового вынести ЗАЩИТНОЕ ПРЕДПИСАНИЕ (запрещает обидчику приближаться, искать встреч и звонить в течение 30 суток).',
+  'Требуйте направления на Судебно-медицинскую экспертизу (СМЭ) для фиксации побоев.',
+  'Звонок на 111 фиксирует обращение на государственном контроле.'
+ ],
+ sh:'Кризисные центры предоставляют временный приют, бесплатного адвоката и психолога. Звоните 150 или 111.'},
+DE:{n:'Германия',em:'110 (полиция) / 112',nums:[
+  ['Hilfetelefon «Gewalt gegen Frauen»','Бесплатно, 24/7, консультации на многих языках','116016'],
+  ['Полиция (Notruf)','Экстренный вызов','110'],
+  ['Скорая / спасение','','112'],
+  ['Weisser Ring','Помощь жертвам преступлений','116006']
+],
+ src:'Номера 116 016, 116 006, 110 и 112 – официальные немецкие и общеевропейские.',
+ org:'Staatsanwaltschaft (прокуратура) / Polizeidienststelle',law:'§ 158 StPO (Strafanzeige) и Gewaltschutzgesetz',
+ how:[
+  'Strafanzeige подаётся письменно или устно в полицию или прокуратуру.',
+  'Потребуйте Aktenzeichen (номер уголовного дела).',
+  'Через Familiengericht можно получить защитное предписание по Gewaltschutzgesetz.'
+ ],
+ sh:'Женские дома (Frauenhäuser) предоставляют закрытое безопасное жилье. Поиск через Hilfetelefon.'},
+ES:{n:'Испания',em:'112',nums:[
+  ['016 (Línea de atención)','Конфиденциально, 24/7, не отображается в детальном счете','016'],
+  ['Экстренная служба','Полиция, скорая помощь','112'],
+  ['Телефон жертв преступлений (ЕС)','','116006']
+],
+ src:'Номера 016 и 112 – официальные линии Правительства Испании.',
+ org:'Juzgado de Violencia sobre la Mujer / Fiscalía',law:'Ley Orgánica 1/2004 (о мерах защиты от гендерного насилия)',
+ how:[
+  'Denuncia подаётся в полиции (Policía Nacional / Guardia Civil) или в суд.',
+  'Запросите Orden de Protección (комплексный охранный ордер).'
+ ],
+ sh:'Шелтеры и центры помощи (Casas de Acogida) доступны через звонок на 016.'},
+US:{n:'США',em:'911',nums:[
+  ['National Domestic Violence Hotline','24/7, чат thehotline.org или SMS START на 88788','18007997233'],
+  ['Emergency','Полиция и скорая','911'],
+  ['Кризисная линия 988','Психологический кризис','988']
+],
+ src:'1-800-799-7233 и 911 – официальные национальные службы США.',
+ org:'District Attorney Office / Police Department',law:'Violence Against Women Act (VAWA) и законам штата',
+ how:[
+  'Полицейский отчёт (Police Report) передаётся прокурору.',
+  'Потребуйте Restraining Order (Защитный ордер) через Victim Advocate.'
+ ],
+ sh:'Приюты находят через National Domestic Violence Hotline.'},
+CA:{n:'Канада',em:'911',nums:[
+  ['Emergency','Экстренная помощь','911'],
+  ['Кризисная линия 988','Психологическая помощь 24/7','988']
+],
+ src:'911 и 988 – общенациональные. Региональные службы доступны через 211.ca.',
+ org:'Crown Attorney / Provincial Police',law:'Criminal Code of Canada',
+ how:[
+  'Подайте заявление в полицию для возбуждения дела Crown Attorney.',
+  'Запросите Peace Bond или Protection Order.'
+ ],
+ sh:'Приюты доступны через службу 211.'}};
+
+const CODES=Object.keys(DB);
+const opt=(el,all)=>{el.innerHTML=CODES.map(c=>`<option value="${c}">${DB[c].n}</option>`).join('')};
+['#cc','#rc','#cs'].forEach(s=>opt($(s)));
+
+/* ===== ВКЛАДКИ ===== */
+function go(t){if(!$('#p-'+t))t='assistant';$$('.panel').forEach(p=>p.classList.toggle('on',p.id==='p-'+t));$$('.tab').forEach(b=>b.setAttribute('aria-selected',b.dataset.t===t));if(location.hash!=='#'+t)try{location.hash=t}catch(e){}}
+$$('.tab').forEach(b=>b.onclick=()=>go(b.dataset.t));addEventListener('hashchange',()=>go(location.hash.slice(1)));
+
+/* ===== АНОНИМНОСТЬ, PANIC BUTTON И TAB CLOAKING ===== */
+function qx(){
+  try{
+    localStorage.clear();
+    sessionStorage.clear();
+    document.body.innerHTML='';
+    document.title='Кулинарные рецепты — Выпечка';
+  }catch(e){}
+  location.replace('https://www.google.com/search?q=погода+на+неделю');
+}
+$('#exBtn').onclick=qx;
+
+let escPressCount = 0;
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    escPressCount++;
+    if (escPressCount >= 2) qx();
+    setTimeout(() => escPressCount = 0, 1200);
+  }
+});
+
+// Tab Cloaking: смена названия и иконки при переключении вкладки
+const origTitle = document.title;
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    document.title = "Кулинарные рецепты — Выпечка";
+    $('#favicon').href = "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍰</text></svg>";
+  } else {
+    document.title = origTitle;
+    $('#favicon').href = "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>";
+  }
+});
+
+$('#stBtn').onclick=function(){
+  const on=document.body.classList.toggle('st');
+  this.setAttribute('aria-pressed',on);
+  document.title=on?'Календарь и рецепты':'SafeHaven AI – защита и убежище';
+  toast(on?'Скрытный режим включен':'Скрытный режим выключен');
+};
+
+/* ===== РЕСУРСЫ И СТАТЬИ ===== */
+const ARTS=[
+['План безопасности при подконтрольном телефоне','<ul><li>Используйте режим Инкогнито или регулярно очищайте историю.</li><li>Дважды нажимайте <b>Esc</b> для моментального закрытия сайта.</li><li>Сохраняйте важные контакты под нейтральными именами (например, «Аптека» или «Рецепты»).</li><li>Договоритесь с близкими о кодовой фразе в смс (например, «Закажи хлеб»), которая означает, что вам нужна полиция.</li></ul>'],
+['Законы и защита от насилия (УК и Защитное предписание)','<p>Физическое насилие, побои и нанесение вреда здоровью являются criminal деяниями. Участковый инспектор или полиция обязаны вынести <b>Защитное предписание</b> — документ, запрещающий агрессору преследовать вас, разыскивать, звонить или проживать на одной территории на срок до 30 дней. Повторное нарушение влечет административный арест или уголовную ответственность.</p>'],
+['Как правильно зафиксировать побои (СМЭ)','<p>1. Обратитесь в скорую (103) или ближайший травмпункт. Укажите врачу, что травмы нанесены конкретным лицом.<br>2. Потребуйте внести все синяки, ссадины и жалобы в медицинскую карту.<br>3. Возьмите справку и требуйте у полиции или прокуратуры направление на <b>Судебно-медицинскую экспертизу (СМЭ)</b>.<br>4. Сделайте качественные фото травм с приложенной линейкой или известным предметом для масштаба.</p>'],
+['Цифровая безопасность и слежка','<ul><li>Проверьте телефон на наличие приложений слежения (Find My, Family Link, Родительский контроль).</li><li>Поменяйте пароли от почты и соцсетей с БЕЗОПАСНОГО чужого устройства.</li><li>Отключите передачу геопозиции в мессенджерах.</li></ul>'],
+['Убежище и Кризисные центры','<p>Кризисные центры предоставляют бесплатное безопасное проживание (до 6 месяцев), питание, психологическую и юридическую помощь. Местонахождение shelter-центров держится в тайне от агрессоров. Связаться можно по номеру 111 или 150.</p>']
+];
+$('#arts').innerHTML=ARTS.map(a=>`<details><summary>${a[0]}</summary>${a[1]}</details>`).join('');
+function nums(){const d=DB[$('#rc').value];$('#nums').innerHTML=d.nums.map(n=>`<div class="hot"><div><b>${n[0]}</b><small>${n[1]}</small></div><a class="num" href="tel:${n[2]}">${n[2]}</a></div>`).join('');$('#src').textContent=d.src+' '+d.sh}
+$('#rc').onchange=nums;nums();
+
+/* ===== ОЦЕНКА РИСКА ===== */
+const QS=['Обидчик когда-либо душил вас или пытался задушить?','Он угрожал убить вас, детей или себя?','Есть ли у него оружие или доступ к нему?','Насилие стало чаще или тяжелее за последние месяцы?','Он следит за вами, контролирует звонки и деньги или не принимает расставание?'];
+$('#tri').innerHTML=QS.map((q,i)=>`<div class="q"><label for="q${i}">${q}</label><select id="q${i}"><option value="0">Нет</option><option value="1">Да</option></select></div>`).join('');
+$('#triBtn').onclick=()=>{
+ const s=QS.reduce((a,_,i)=>a+ +$('#q'+i).value,0),k=+$('#q0').value+ +$('#q2').value+ +$('#q1').value;
+ const L=s>=3||k>=2?2:s>=1?1:0;
+ const T=[['l0','Низкий признаков риска','Опасных признаков не выявлено, но будьте внимательны.',['Запомните номера помощи 111 и 150.','Составьте план безопасности.']],
+ ['l1','Повышенный риск','Есть признаки, требующие немедленных действий.',['Расскажите доверенному человеку.','Обратитесь на горячую линию 111 / 150.','Соберите документы и тревожную сумку.']],
+ ['l2','Высокий риск','Высокая опасность для жизни и здоровья. Действуйте.',['Вызывайте полицию '+DB[$('#cc').value].em+' при угрозе.','Уйдите в безопасное место или кризисный центр.','Подайте заявление на защитное предписание (вкладка «Заявление»).']]][L];
+ const r=$('#triRes');r.innerHTML=`<span class="lvl ${T[0]}">${T[1]}</span><div class="bar"><i id="bi"></i></div><p>${T[2]}</p><ul>${T[3].map(x=>`<li>${x}</li>`).join('')}</ul><div class="note">Это автоматическая оценка. При угрозе жизни всегда обращайтесь в экстренные службы!</div>`;r.classList.add('show');setTimeout(()=>$('#bi').style.width=(s/5*100||8)+'%',50);
+};
+
+/* ===== ПОМОЩНИК ИИ (GEMINI API + ОФЛАЙН РЕЗЕРВ) ===== */
+const ctx={cc:'KZ',turns:0};const log=$('#log');
+const add=(t,cls,acts)=>{const d=document.createElement('div');d.className='msg '+(cls||'');d.textContent=t;if(acts){const a=document.createElement('div');a.className='acts';acts.forEach(x=>{const b=document.createElement('button');b.className='chip';b.type='button';b.textContent=x[0];b.onclick=x[1];a.appendChild(b)});d.appendChild(a)}log.appendChild(d);log.scrollTop=log.scrollHeight;return d};
+const N=()=>DB[ctx.cc];
+const TAB=(t,l)=>[l,()=>go(t)];
+
+// Интеграция с бесплатным Gemini API
+async function fetchGeminiResponse(userPrompt, countryName) {
+  const customKey = $('#apiKeyInp').value.trim();
+  // По умолчанию используется публичный ключ или ключ пользователя
+  const apiKey = customKey || ""; 
+  if(!apiKey) return null; // Переход на локальную базу при отсутствии ключа
+
+  const systemInstruction = `Ты — специализированный юридический и психологический консультант по поддержке женщин, столкнувшихся с бытовым, физическим или психологическим насилием. 
+Страна пользователя: ${countryName}.
+Твои правила:
+1. Будь предельно эмпатичным, поддерживающим и спокойным. Никогда не вини жертву.
+2. Давай юридически точные советы с опорой на нормы Уголовного кодекса, Законы о профилактике бытового насилия, вынесение Защитных предписаний и прохождение СМЭ (судебно-медицинской экспертизы).
+3. При прямой угрозе жизни всегда в первую очередь советуй звонить в экстренные службы (102, 111, 150).
+4. Отвечай структурированно, без лишней "воды", чёткими шагами.`;
+
+  try {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [
+          { role: 'user', parts: [{ text: systemInstruction + "\n\nВопрос пользователя: " + userPrompt }] }
+        ]
+      })
+    });
+    const data = await res.json();
+    if (data.candidates && data.candidates[0].content.parts[0].text) {
+      return data.candidates[0].content.parts[0].text;
+    }
+  } catch (e) {
+    console.warn("Gemini API Error, switching to local KB:", e);
+  }
+  return null;
+}
+
+const KB=[
+{k:/убь|убить|нож|оружи|задуш|душит|избива|бьёт|бьет|ударил|боюсь за жизнь|прямо сейчас/i,w:9,dg:1,a:()=>[`Ваша жизнь в опасности! Срочно вызывайте экстренную помощь: ${N().em}.\nЕсли возможно, выбегите в людное место, к соседям или на улицу. Телефон держите в руках.\nПомощь после этого: вынесение защитного предписания и подача заявления.`,[TAB('assistant','Оценка риска'),TAB('complaint','Заявление')]]},
+{k:/прокурор|заявлен.*(полиц|прокур)|подать жалоб|жалоб|полиция не|не приняли/i,w:6,a:()=>[`В ${N().n} заявление подается в: ${N().org}. Основание: ${N().law}.\nЕсли полиция отказывается принимать заявление, требование прокурору обжалует бездействие. Обязательно требование талона КУИ.`,[TAB('complaint','Составить заявление')]]},
+{k:/предписан|запрет приближ|ордер|охранн/i,w:6,a:()=>[`Защитные меры в ${N().n}: ${N().how.join(' ')}`,[TAB('complaint','Как подать')]]},
+{k:/побои|смэ|экспертиз|синяк|травм|больниц/i,w:6,a:()=>[`Зафиксируйте травмы в травмпункте (103). Требуйте у полицию направление на Судебно-медицинскую экспертизу (СМЭ). Сфотографируйте повреждения с линейкой.`,[TAB('resources','Статья о СМЭ')]]},
+{k:/убежищ|asylum|политическ|беженц/i,w:5,a:()=>['Убежище просят в миграционной службе страны назначения. Нужно описать преследование, отсутствие защиты в стране происхождения и приложить доказательства. Сроки критичны.',[TAB('asylum','Шаблон заявления')]]},
+{k:/жильё|жилье|приют|переночев|кризисн|куда уйти/i,w:7,a:()=>[`${N().sh}\nСначала позвоните на линию помощи: ${N().nums[0][0]} (${N().nums[0][2]}).`,[TAB('resources','Номера помощи')]]},
+{k:/телефон|номер|горяч|позвонить|линия/i,w:6,a:()=>[`Горячие линии в ${N().n}:\n`+N().nums.map(n=>`• ${n[0]}: ${n[2]}`).join('\n'),[TAB('resources','Все номера')]]},
+{k:/страшно|одинок|плохо|устал|депресс/i,w:4,a:()=>['Мне жаль, что вы в такой тяжелой ситуации. Вы не виноваты в происходящем. Позвоните на бесплатную линию поддержки 111 или 150 — там вам ответят психологи.',[TAB('resources','Позвонить')]]}
+];
+
+async function reply(q){
+  // Попытка запроса к Gemini AI
+  const aiRes = await fetchGeminiResponse(q, N().n);
+  if(aiRes) return [aiRes, [TAB('complaint','Составить заявление'), TAB('resources','Номера помощи')]];
+
+  // Резервный поиск по офлайн-базе
+  let best=null,sc=0;
+  KB.forEach(e=>{if(e.k.test(q)&&e.w>sc){sc=e.w;best=e}});
+  if(!best)return [ctx.turns<2?'Расскажите чуть подробнее: что именно произошло, есть ли угроза вашей безопасности и в какой вы стране?':'Могу составить юридическое заявление в прокуратуру, рассказать о защитных предписаниях, фиксации побоев (СМЭ) или дать контакты кризисных центров.',[TAB('assistant','Оценка риска'),TAB('resources','Ресурсы')]];
+  return best.a();
+}
+
+async function ask(q){
+  add(q,'me');ctx.turns++;
+  const w=add('');w.innerHTML='<span class="dots"><i></i><i></i><i></i></span>';
+  const dg=/убь|убить|нож|оружи|задуш|душит|избива|бьёт|бьет|ударил|прямо сейчас/i.test(q);
+  
+  const r = await reply(q);
+  w.remove();
+  add(r[0], dg?'dg':'', r[1]);
+}
+
+$('#chat').onsubmit=e=>{e.preventDefault();const v=$('#inp').value.trim();if(v){ask(v);$('#inp').value=''}};
+$('#cc').onchange=()=>{ctx.cc=$('#cc').value;add('Страна изменена на: '+N().n+'. Все законы и экстренные телефоны обновлены.')};
+$('#sug').innerHTML=['Мне угрожают прямо сейчас','Как подать заявление и вынести защитное предписание?','Как пройти СМЭ и зафиксировать побои?','Где найти кризисный центр?'].map(s=>`<button class="chip" type="button">${s}</button>`).join('');
+$$('#sug .chip').forEach(c=>c.onclick=()=>ask(c.textContent));
+add('Здравствуйте. Я ИИ-консультант SafeHaven. Я знаю законы о защите прав женщин, порядок вынесения защитных предписаний и подачу заявлений. Расскажите, что произошло?');
+
+/* ===== ЗАЯВЛЕНИЕ В ПРОКУРАТУРУ ===== */
+function how(){
+  const d=DB[$('#cs').value];
+  $('#how').innerHTML=`<h3>${d.n}</h3><p class="sub">${d.org}</p><ul>${d.how.map(x=>`<li style="color:var(--mut);margin-bottom:6px">${x}</li>`).join('')}</ul><div class="note">Правовая база: ${d.law}. При отказе принятия заявления требуйте письменный отказ.</div>`;
+}
+$('#cs').onchange=how;how();
+
+$('#cg').onclick=()=>{
+  const d=DB[$('#cs').value],v=i=>$(i).value.trim()||'[не указано]';
+  const needOrder = $('#cOrder').checked;
+  const needAnon = $('#cAnon').checked;
+
+  let text = `В ОРГАНЫ ПРОКУРАТУРЫ / ПОЛИЦИИ ${d.n.toUpperCase()}\nОт гражданки: ${v('#cn')}\nБезопасный контакт для связи: ${v('#cl')}\n\nЗАЯВЛЕНИЕ\nо совершении правонарушения и принятии срочных мер защиты\n\nНастоящим сообщаю, что ${v('#cd')} в отношении меня со стороны ${v('#cw')} были совершены противоправные действия, содержащие признаки: ${$('#ct').value}.\n\nОбстоятельства произошедшего:\n${v('#cx')}\n\nИмеющиеся доказательства и свидетели:\n${v('#ce')}\n\nНа основании вышеизложенного, руководствуясь ${d.law},\n\nПРОШУ:\n1. Принять и зарегистрировать настоящее заявление в КУИ с выдачей талона-уведомления.\n2. Провести процессуальную проверку и привлечь виновное лицо к ответственности согласно законодательству.`;
+
+  if(needOrder) {
+    text += `\n3. ВЫНЕСТИ ЗАЩИТНОЕ ПРЕДПИСАНИЕ в отношении правонарушителя с запретом совершать бытовое насилие, разыскивать, преследовать и вступать в контакты.\n4. Выдать направление на прохождение Судебно-медицинской экспертизы (СМЭ) для фиксации полученных повреждений.`;
+  }
+  if(needAnon) {
+    text += `\n5. В целях обеспечения моей личной безопасности сохранить в тайне от правонарушителя мои персональные данные и фактический адрес нахождения.`;
+  }
+
+  text += `\n\nОб ответственности за заведомо ложный донос предупреждена.\n\nДата: ${new Date().toLocaleDateString('ru-RU')}\nПодпись: ____________`;
+
+  $('#draft').textContent = text;
+  $('#draft').style.display='block';
+  $('#cp').style.display='inline-flex';
+  toast('Юридическое заявление сформировано');
+};
+
+$('#cp').onclick=()=>{
+  if(navigator.clipboard){
+    navigator.clipboard.writeText($('#draft').textContent).then(()=>toast('Текст заявления скопирован')).catch(()=>toast('Выделите текст и скопируйте'));
+  }else{
+    toast('Выделите и скопируйте текст вручную');
+  }
+};
+
+/* ===== УБЕЖИЩЕ ===== */
+const AN={DE:'Подаётся в BAMF. Заявление о намерении – в полиции или приёмном центре. Консультации бесплатны.',CA:'Подаётся в IRCC или CBSA. Помощь по программам защиты предоставляют юридические клиники.',ES:'Подаётся в Oficina de Asilo y Refugio или в полиции. Номер дела выдают при регистрации.',US:'Форма I-589 подаётся не позднее 1 года после въезда (есть исключения). Обратитесь к бесплатному юристу.'};
+$('#ag').onclick=()=>{
+  const c=$('#ac').value,n=$('#ac').selectedOptions[0].text;
+  const r=$('#adraft');
+  r.textContent=`ЗАЯВЛЕНИЕ О ПРЕДОСТАВЛЕНИИ МЕЖДУНАРОДНОЙ ЗАЩИТЫ / УБЕЖИЩА\nКому: Органам миграции (${n})\nДата: ${new Date().toLocaleDateString('ru-RU')}\n\nЯ, [ФИО, дата рождения], прошу предоставить статус беженца / международную защиту.\nОснование: ${$('#ab').value}.\n\nПричины обращения: В стране происхождения я подвергалась систематическому насилию и преследованию. Органы правопорядка не смогли обеспечить мою безопасность.\nПриложения: Копия паспорта, медицинские справки, заявления в полицию, фото доказательства.\n\nПодпись: ____________`;
+  r.style.whiteSpace='pre-wrap';r.classList.add('show');
+  $('#anote').textContent=AN[c];
+  toast('Черновик обращения готов');
+};
+
+/* ===== ЖИВОЙ АНИМИРОВАННЫЙ ФОН ===== */
+const cv=$('#fx'),cx=cv.getContext('2d');let W,H,P=[],m={x:-999,y:-999};
+const rs=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight;P=Array.from({length:Math.min(60,W/20|0)},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*2+.8}))};
+addEventListener('resize',rs);rs();
+(function f(){
+ cx.clearRect(0,0,W,H);
+ for(const p of P){
+  p.x+=p.vx;p.y+=p.vy;
+  if(p.x<0||p.x>W)p.vx*=-1;
+  if(p.y<0||p.y>H)p.vy*=-1;
+  const dx=m.x-p.x,dy=m.y-p.y;
+  if(Math.hypot(dx,dy)<160){p.x+=dx*.008;p.y+=dy*.008}
+  cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.3);cx.fillStyle='rgba(201,188,255,.8)';cx.fill();
+  for(const q of P){
+   const e=Math.hypot(p.x-q.x,p.y-q.y);
+   if(e<110){
+    cx.strokeStyle='rgba(139,108,255,'+.25*(1-e/110)+')';
+    cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.stroke();
+   }
+  }
+ }
+ requestAnimationFrame(f);
+})();
+addEventListener('pointermove',e=>{m.x=e.clientX;m.y=e.clientY;$('#glow').style.left=e.clientX+'px';$('#glow').style.top=e.clientY+'px';if($('#shield'))$('#shield').style.transform=`translate(${(e.clientX/innerWidth-.5)*16}px,${(e.clientY/innerHeight-.5)*16}px)`});
+go(location.hash.slice(1)||'assistant');
+</script>
+</body>
+</html>
